@@ -142,7 +142,7 @@ const SignUpScreen = ({ onNavigateToLogin, onRegisterUser, registeredUsers }) =>
             />
           </div>
           
-          <div className="mt-8 flex justify-end">
+          <div className="mt-8 flex justify-center">
             <button
               type="button"
               onClick={handleSubmit}
@@ -154,6 +154,18 @@ const SignUpScreen = ({ onNavigateToLogin, onRegisterUser, registeredUsers }) =>
             {successMessage && (
               <p className="text-green-600 text-center mt-4">{successMessage}</p>
             )}
+            <div className="mt-6 text-center">
+              <p className="text-gray-600">
+                Already a user?{" "}
+                <button
+                  type="button"
+                  onClick={onNavigateToLogin}
+                  className="text-teal-600 hover:underline font-semibold"
+                >
+                  Sign in
+                </button>
+              </p>
+        </div>
         </div>
       </div>
     </div>
