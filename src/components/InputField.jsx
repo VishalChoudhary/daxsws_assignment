@@ -8,71 +8,42 @@ const InputField = ({
   value, 
   onChange, 
   error, 
-  placeholder,
   showPasswordToggle = false,
   onTogglePassword,
   showPassword = false
 }) => {
   return (
-    <div style={{ marginBottom: '1rem' }}>
-      <div style={{ position: 'relative' }}>
-        <input
-          type={showPasswordToggle ? (showPassword ? 'text' : 'password') : type}
-          value={value}
-          onChange={onChange}
-          placeholder={placeholder || label}
-          style={{
-            width: '100%',
-            padding: '0.75rem 1rem',
-            backgroundColor: error ? '#fed7d7' : '#f7fafc',
-            borderBottom: `2px solid ${error ? '#e53e3e' : '#319795'}`,
-            border: 'none',
-            borderRadius: '4px',
-            outline: 'none',
-            color: '#4a5568',
-            fontSize: '1rem',
-            transition: 'all 0.2s ease'
-          }}
-          onFocus={(e) => {
-            e.target.style.backgroundColor = 'white';
-            e.target.style.boxShadow = '0 0 0 2px rgba(49, 151, 149, 0.2)';
-          }}
-          onBlur={(e) => {
-            e.target.style.backgroundColor = error ? '#fed7d7' : '#f7fafc';
-            e.target.style.boxShadow = 'none';
-          }}
-        />
-        {showPasswordToggle && (
-          <button
-            type="button"
-            onClick={onTogglePassword}
-            style={{
-              position: 'absolute',
-              right: '0.75rem',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              background: 'none',
-              border: 'none',
-              cursor: 'pointer',
-              color: '#718096',
-              padding: '0',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-            onMouseOver={(e) => e.target.style.color = '#4a5568'}
-            onMouseOut={(e) => e.target.style.color = '#718096'}
-          >
-            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-          </button>
-        )}
-      </div>
+    <div className="mb-4 relative">
+      <input
+        type={showPasswordToggle ? (showPassword ? 'text' : 'password') : type}
+        value={value}
+        onChange={onChange}
+        placeholder=" "
+        className={`peer w-full px-3 pt-5 pb-2 rounded-md bg-gray-50 
+          focus:outline-none focus:ring-2 focus:ring-teal-500 
+          ${error ? "border border-red-500 bg-red-100" : "border border-gray-300"}`}
+      />
+
+      <label
+        className="absolute left-3 top-2 text-gray-500 text-xs transition-all
+          peer-placeholder-shown:top-4 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-sm
+          peer-focus:top-2 peer-focus:text-xs peer-focus:text-teal-600"
+      >
+        {label}
+      </label>
+
+      {showPasswordToggle && (
+        <button
+          type="button"
+          onClick={onTogglePassword}
+          className="absolute right-3 top-3 text-gray-500 hover:text-gray-700"
+        >
+          {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+        </button>
+      )}
+
       {error && (
-        <p style={{
-          color: '#e53e3e',
-          fontSize: '0.875rem',
-          marginTop: '0.25rem',
-          marginLeft: '0.25rem'
-        }}>{error}</p>
+        <p className="text-red-500 text-sm mt-1 ml-1">{error}</p>
       )}
     </div>
   );
