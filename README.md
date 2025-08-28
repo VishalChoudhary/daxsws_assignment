@@ -33,7 +33,7 @@ This project is built with **Create React App**, **TailwindCSS**, and **Lucide R
 
 ### 1. Clone Repository
 ```bash
-git clone https://github.com/<your-username>/daxsws_assignment.git
+git@github.com:VishalChoudhary/daxsws_assignment.git
 cd daxsws_assignment
 ```
 
